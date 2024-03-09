@@ -1,7 +1,7 @@
 import uuid
-from db.database import Base
+from db.database import Base,UserStatus
 from sqlalchemy.sql import func
-from sqlalchemy import create_engine, ForeignKey, Boolean, Column, String
+from sqlalchemy import create_engine, ForeignKey, Boolean, Column, String, Integer, TIMESTAMP, text
 from sqlalchemy import Enum as SQLAlchemyEnum
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
