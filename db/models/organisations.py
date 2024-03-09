@@ -19,4 +19,4 @@ class Organisation(Base):
     email = Column(String, unique=True, nullable=False)
     name = Column(String, nullable=False)
 
-    users = relationship("User", back_populates="organisationId")
+    users = relationship("User", back_populates="organisation")

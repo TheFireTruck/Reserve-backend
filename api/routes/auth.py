@@ -37,7 +37,7 @@ async def signup(user: AdminSignUp, db: Session = Depends(get_db)):
         "email": user.organisation_email,
         "name": user.organisation_name
     })
-    
+
     new_user = User({
         "organisation_id": organisation.id,
         "email": new_user["email"],
