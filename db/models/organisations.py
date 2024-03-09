@@ -8,7 +8,7 @@ from sqlalchemy.orm import relationship
 from enum import Enum
 
 class Organisation(Base):
-    __tablename__ = "users"
+    __tablename__ = "organisations"
     id = Column(
         UUID(as_uuid=True),
         primary_key=True,
@@ -19,4 +19,4 @@ class Organisation(Base):
     email = Column(String, unique=True, nullable=False)
     name = Column(String, nullable=False)
 
-    users = relationship("User", order_by=User.id, back_populates="organisationId")
+    users = relationship("User", back_populates="organisationId")

@@ -23,7 +23,7 @@ class User(Base):
     email = Column(String, unique=True, nullable=False)
     full_name = Column(String, nullable=False)
     password = Column(String, nullable=False)
-    profile_picture = Column(String, nullable=False)
+    profile_picture = Column(String, nullable=True)
     role = Column(SQLAlchemyEnum(ROLES), default=ROLES.USER, nullable=False)
 
     organisation_id = Column(UUID() , ForeignKey("organisations.id"),nullable=True)
