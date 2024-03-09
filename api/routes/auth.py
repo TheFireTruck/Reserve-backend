@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException, status, Response, Request
-from api.models.auth import UserSignUp
+from api.models.auth import UserSignUp, UserResponse
 from db.database import get_db
 
 auth_router = APIRouter(tags=["Auth"], prefix="/users")
