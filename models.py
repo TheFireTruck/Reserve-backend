@@ -17,3 +17,4 @@ class User(Base):
 
     def __repr__(self):
         return f"User(full_name={self.full_name}"
+    
