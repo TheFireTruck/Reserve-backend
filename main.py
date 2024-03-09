@@ -1,11 +1,11 @@
 from fastapi import FastAPI
-# from fastapi_jwt_auth import AuthJWT
-# from schema import Settings
-# from auth_routes import auth_router
+
+from api.routes.auth import auth_router
 
 
 app = FastAPI()
 
+app.include_router(auth_router, prefix="/api/v1")
 # @AuthJWT.load_config
 # def get_config():
 #     return Settings()
