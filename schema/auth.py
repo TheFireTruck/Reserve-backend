@@ -1,4 +1,5 @@
 from pydantic import BaseModel, EmailStr, Field
+from uuid import UUID
 
 class UserLogin(BaseModel):
     email: EmailStr = Field(...)
@@ -9,7 +10,7 @@ class UserSignUp(BaseModel):
     email: EmailStr = Field(...)
     password: str = Field(...)
     full_name: str = Field(...)
-    organisation_id: str = Field(...)
+    organisation_id: UUID = Field(...)
 
 class AdminSignUp(BaseModel):
     email: EmailStr = Field(...)
@@ -20,10 +21,10 @@ class AdminSignUp(BaseModel):
     organisation_email: str = Field(...)
 
 class UserResponse(BaseModel):
-    id: str
+    id: UUID
     email: str
     full_name: str
     role: str
-    organisation_id: str
+    organisation_id: UUID
     class Config:
         orm_mode = True

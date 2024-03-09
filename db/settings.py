@@ -2,7 +2,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
-DATABASE_URL = "postgresql://postgres:tesla@localhost:5432/resources-api?schema=public"
+
+DATABASE_URL = 'postgresql://postgres.oyoulaielonsawvomqac:Hex0592048289@aws-0-us-west-1.pooler.supabase.com:5432/postgres'
 
 engine = create_engine(DATABASE_URL)
 

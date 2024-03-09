@@ -1,17 +1,18 @@
 from fastapi import APIRouter, Depends, HTTPException, status, Response, Request
-from api.models.auth import UserSignUp, AdminSignUp, UserResponse
+from schema.auth import UserSignUp, AdminSignUp, UserResponse
 from sqlalchemy.orm import Session
-from db.database import get_db
-from db.models.users import User, ROLES
-from db.models.organisations import Organisation
+from db.settings import get_db
+from db.models import User, Organisation
 from utils.utils import get_password_hash
+from crud import Operations
 
 auth_router = APIRouter(tags=["Auth"], prefix="/auth")
 
 @auth_router.post('/users/register', status_code=status.HTTP_201_CREATED, response_model=UserResponse)
 async def signup(user: UserSignUp, db: Session = Depends(get_db)):
-
-  return user
+  created_user = Operations.createuser(user, db)
+  return created_user
+  
 
 @auth_router.post('/admin/register', status_code=status.HTTP_201_CREATED, response_model=UserSignUp)
 async def signup(user: AdminSignUp, db: Session = Depends(get_db)):
@@ -43,7 +44,7 @@ async def signup(user: AdminSignUp, db: Session = Depends(get_db)):
         "email": new_user["email"],
         "password": new_user["password"],
         "full_name": new_user["full_name"],
-        "role": ROLES.ADMIN
+        "role": "admin"
     })
 
     db.add(organisation)
