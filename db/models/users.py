@@ -26,5 +26,5 @@ class User(Base):
     profile_picture = Column(String, nullable=True)
     role = Column(SQLAlchemyEnum(ROLES), default=ROLES.USER, nullable=False)
 
-    organisation_id = Column(UUID() , ForeignKey("organisations.id"),nullable=True)
+    organisation_id = Column(UUID() , ForeignKey("organisations.id"), nullable=True)
     organisation = relationship("Organisation", back_populates="users")
